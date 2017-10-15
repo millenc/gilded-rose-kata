@@ -12,11 +12,17 @@ class GildedRoseTest(unittest.TestCase):
     def test_quality_degrades(self):
         self.assertEquals(self._update_item(Item("Elixir of the Mongoose", 10, 50)).quality, 49)
 
+    def test_conjured_quality_degrades(self):
+        self.assertEquals(self._update_item(Item("Conjured Elixir of the Mongoose", 10, 50)).quality, 48)
+
     def test_sell_in_decrements(self):
         self.assertEquals(self._update_item(Item("Elixir of the Mongoose", 10, 50)).sell_in, 9)
 
     def test_quality_degrades_twice_as_fast_when_sell_in_passed(self):
         self.assertEquals(self._update_item(Item("Elixir of the Mongoose", 0, 50)).quality, 48)
+
+    def test_conjured_quality_degrades_twice_as_fast_when_sell_in_passed(self):
+        self.assertEquals(self._update_item(Item("Conjured Elixir of the Mongoose", 0, 50)).quality, 46)
 
     def test_quality_higher_or_equal_zero(self):
         self.assertEquals(self._update_item(Item("Elixir of the Mongoose", 0, 0)).quality, 0)

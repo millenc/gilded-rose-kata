@@ -21,7 +21,7 @@ class GildedRose(object):
     
     def update_item_quality(self, item):
         self.update_item_sell_in(item)
-        item.quality = max(0, item.quality - (1 if item.sell_in >= 0 else 2))
+        item.quality = max(0, item.quality - (1 if item.sell_in >= 0 else 2) * (2 if item.name.startswith("Conjured") else 1))
 
     def update_aged_brie_item_quality(self, item):
         self.update_item_sell_in(item)
